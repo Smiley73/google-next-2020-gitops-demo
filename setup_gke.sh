@@ -22,7 +22,7 @@ cnrm-system@${PROJECT_ID}.iam.gserviceaccount.com \
 --member="serviceAccount:cnrm-system@${PROJECT_ID}.iam.gserviceaccount.com" \
 --role="roles/iam.workloadIdentityUser"
 
-gcloud container clusters create gitops-demo \
+gcloud container clusters create next-gitops-demo \
   --zone=us-central1-a \
   --preemptible \
   --machine-type=n1-standard-1
@@ -31,6 +31,6 @@ gcloud container clusters create gitops-demo \
 #  --enable-private-nodes \
 #  --enable-ip-alias \
 
-gcloud container clusters get-credentials gitops-demo --zone us-central1-a --project ${PROJECT_ID}
+gcloud container clusters get-credentials next-gitops-demo --zone us-central1-a --project ${PROJECT_ID}
 
 kubectl get pods --all-namespaces

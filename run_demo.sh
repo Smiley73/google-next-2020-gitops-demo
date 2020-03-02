@@ -9,12 +9,12 @@ echo "Using GCP project '${PROJECT_ID}'"
 
 gcloud config set project ${PROJECT_ID}
 
-gcloud container clusters get-credentials gitops-demo --zone us-central1-a --project ${PROJECT_ID}
+gcloud container clusters get-credentials next-gitops-demo --zone us-central1-a --project ${PROJECT_ID}
 
 mkdir -p tmp
 
 export URI="https://github.com/Smiley73/google-next-2020-gitops-demo.git"
-export REF="tweaking"
+export REF="master"
 
 # create the GitOpsConfig CR
 helm template templates/eunomia-cr/ --set projectName="${PROJECT_ID}" --set git.uri="${URI}" --set git.ref="${REF}" | kubectl apply -f -
