@@ -1,0 +1,24 @@
+apiVersion: eunomia.kohls.io/v1alpha1
+kind: GitOpsConfig
+metadata:
+  name: "gcp-config-connector"
+  namespace: "gcp-gitops-demo"
+spec:
+  templateSource:
+    uri: {{ $.Values.git.uri }}
+    ref: {{ $.Values.git.ref }}
+    contextDir: templates/google-config-connector
+  parameterSource:
+    uri: {{ $.Values.git.uri }}
+    ref: {{ $.Values.git.ref }}
+    contextDir: configs/demo
+  triggers:
+  - type: Change
+#  - type: Webhook
+#  - type: Periodic
+    cron: '*/1 * * * *'
+  serviceAccountRef: eunomia-runner
+  templateProcessorImage: quay.io/kohlstechnology/eunomia-helm:dev
+  resourceHandlingMode: Apply
+  resourceDeletionMode: Delete
+---

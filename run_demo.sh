@@ -12,9 +12,15 @@ gcloud config set project ${PROJECT_ID}
 gcloud container clusters get-credentials gitops-demo --zone us-central1-a --project ${PROJECT_ID}
 
 mkdir -p tmp
-git clone git@github.com:KohlsTechnology/eunomia.git tmp/eunomia
 
-# Deploy the operator
-helm template tmp/eunomia/deploy/helm/eunomia-operator/ | kubectl apply -f -
+export URI="https://github.com/Smiley73/google-next-2020-gitops-demo.git"
+export REF="tweaking"
+
+# create the GitOpsConfig CR
+helm template templates/eunomia-cr/ --set projectName="${PROJECT_ID}" --set git.uri="${URI}" --set git.ref="${REF}" | kubectl apply -f -
 
 kubectl get pods --all-namespaces
+
+kubectl get gitopsconfigs --all-namespaces
+
+kubectl describe gitopsconfigs --all-namespaces
