@@ -13,11 +13,8 @@ gcloud container clusters get-credentials next-gitops-demo --zone us-central1-a 
 
 mkdir -p tmp
 
-# create the GitOpsConfig CR
-helm template templates/eunomia-cr/ --set projectName="${PROJECT_ID}" --set git.uri="${URI}" --set git.ref="${REF}" | kubectl apply -f -
+# Remove the namespace and everything in it
+helm template templates/eunomia-cr/ --set projectName="${PROJECT_ID}" --set git.uri="${URI}" --set git.ref="${REF}" | kubectl delete -f -
 
-kubectl get pods --all-namespaces
-
-kubectl get gitopsconfigs --all-namespaces
-
-kubectl describe gitopsconfigs --all-namespaces
+# Restart Eunomia
+kubectl deleted pods --all -n eunomia-operator

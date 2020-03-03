@@ -1,0 +1,6 @@
+apiVersion: v1
+name: google-config-connector
+version: 1.0.0
+description: Templates for provisioning various GCP resources through GitOps
+home: https://github.com/KohlsTechnology/eunomia
+engine: gotpl
