@@ -9,10 +9,11 @@ echo "Using GCP project '${PROJECT_ID}'"
 
 gcloud config set project ${PROJECT_ID}
 
-gcloud container clusters get-credentials gitops-demo --zone us-central1-a --project ${PROJECT_ID}
+gcloud container clusters get-credentials next-gitops-demo --zone us-central1-a --project ${PROJECT_ID}
 
+# check out the Eunomia repo
 mkdir -p tmp
-git clone git@github.com:KohlsTechnology/eunomia.git tmp/eunomia
+git clone https://github.com/KohlsTechnology/eunomia.git tmp/eunomia
 
 # Deploy the operator
 helm template tmp/eunomia/deploy/helm/eunomia-operator/ | kubectl apply -f -

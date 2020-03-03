@@ -1,8 +1,8 @@
 apiVersion: eunomia.kohls.io/v1alpha1
 kind: GitOpsConfig
 metadata:
-  name: "gcp-config-connector"
-  namespace: "gcp-gitops-demo"
+  name: "google-config-connector"
+  namespace: "next-gitops-demo"
 spec:
   templateSource:
     uri: {{ $.Values.git.uri }}
@@ -16,7 +16,7 @@ spec:
   - type: Change
 #  - type: Webhook
 #  - type: Periodic
-    cron: '*/1 * * * *'
+#    cron: '*/1 * * * *'
   serviceAccountRef: eunomia-runner
   templateProcessorImage: quay.io/kohlstechnology/eunomia-helm:dev
   resourceHandlingMode: Apply
