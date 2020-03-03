@@ -18,9 +18,3 @@ fi
 gcloud projects add-iam-policy-binding ${PROJECT_ID} \
 --member="serviceAccount:cnrm-system@${PROJECT_ID}.iam.gserviceaccount.com" \
 --role="roles/owner"
-
-# Access for workload identity
-gcloud iam service-accounts add-iam-policy-binding \
-cnrm-system@${PROJECT_ID}.iam.gserviceaccount.com \
---member="serviceAccount:${PROJECT_ID}.svc.id.goog[cnrm-system/cnrm-controller-manager]" \
---role="roles/iam.workloadIdentityUser"
