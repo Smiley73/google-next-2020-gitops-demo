@@ -17,4 +17,4 @@ mkdir -p tmp
 helm template templates/eunomia-cr/ --set projectName="${PROJECT_ID}" --set git.uri="${URI}" --set git.ref="${REF}" | kubectl delete -f -
 
 # Restart Eunomia
-kubectl deleted pods --all -n eunomia-operator
+kubectl delete pods --all -n eunomia-operator

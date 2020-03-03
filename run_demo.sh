@@ -11,8 +11,6 @@ gcloud config set project ${PROJECT_ID}
 
 gcloud container clusters get-credentials next-gitops-demo --zone us-central1-a --project ${PROJECT_ID}
 
-mkdir -p tmp
-
 # create the GitOpsConfig CR
 helm template templates/eunomia-cr/ --set projectName="${PROJECT_ID}" --set git.uri="${URI}" --set git.ref="${REF}" | kubectl apply -f -
 
