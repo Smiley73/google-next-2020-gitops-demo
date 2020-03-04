@@ -23,4 +23,6 @@ spec:
   networkInterface:
     - subnetworkRef:
         name: "next-gitops-demo-1-subnet1"
+  scheduling:
+    preemptible: true
 {{- end }}
