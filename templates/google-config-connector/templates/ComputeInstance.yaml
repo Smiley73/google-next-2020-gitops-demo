@@ -13,6 +13,7 @@ spec:
   machineType: n1-standard-1
   tags:
     - icmp
+    - ssh
   zone: us-central1-a
   bootDisk:
     initializeParams:
@@ -23,6 +24,8 @@ spec:
   networkInterface:
     - subnetworkRef:
         name: "next-gitops-demo-1-subnet-1"
+      accessConfig:
+        - networkTier: STANDARD
   scheduling:
     automaticRestart: false
     preemptible: true

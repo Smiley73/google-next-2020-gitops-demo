@@ -41,6 +41,8 @@ helm template templates/eunomia-cr/ -f configs/demo/networks.yaml \
 # create the google config connector CRs
 #helm template templates/google-config-connector/ -f configs/demo/networks.yaml \
 #  | kubectl apply -f -
+#helm template templates/google-config-connector/ -f configs/demo/instances.yaml \
+#  | kubectl apply -f -
 
 echo -e "\n"
 # Restart Eunomia

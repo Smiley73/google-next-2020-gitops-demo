@@ -12,9 +12,11 @@ ComputeNetworks:
         ipCidrRange: 10.1.2.0/24
     ComputeFirewall:
       - name: "default-deny"
-        priority: 1000
+        priority: 65535
         direction: INGRESS
         description: "Default Deny"
+        sourceRanges:
+          - "0.0.0.0/0"
         deny:
           - protocol: "icmp"
           - protocol: "tcp"
@@ -22,8 +24,21 @@ ComputeNetworks:
       - name: "allow-icmp"
         priority: 900
         direction: INGRESS
-        description: "Default Deny"
+        description: "Allow ICMP"
         targetTags:
           - "icmp"
         allow:
           - protocol: "icmp"
+        sourceRanges:
+          - "10.0.0.0/8"
+      - name: "allow-ssh"
+        priority: 900
+        direction: INGRESS
+        description: "Allow SSH from Google's Jump Hosts"
+        targetTags:
+          - "ssh"
+        sourceRanges:
+          - "35.235.240.0/20"
+        allow:
+          - protocol: "tcp"
+            ports: ["22"]

@@ -18,6 +18,10 @@ spec:
   priority: {{ .priority }}
   targetTags: {{ .targetTags | default "[]" }}
   sourceTags: {{ .sourceTags | default "[]" }}
+{{- with .sourceRanges }}
+  sourceRanges: 
+    {{- . | toYaml | nindent 6}}
+{{- end }}
   {{- with .deny }}
   deny:
     {{- toYaml . | nindent 6 }}
