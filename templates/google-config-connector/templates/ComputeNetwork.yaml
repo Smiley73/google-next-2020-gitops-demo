@@ -1,26 +1,12 @@
 {{- range .Values.ComputeNetworks }}
-{{- $NetworkName := .name -}}
 apiVersion: compute.cnrm.cloud.google.com/v1beta1
 kind: ComputeNetwork
 metadata:
   namespace: {{ $.Values.namespace }}
-  name: {{ $NetworkName }}
+  name: {{ .name }}
 spec:
   autoCreateSubnetworks: false
   routingMode: {{ .routingMode }}
   description: {{ .description | quote }}
 ---
-{{- range .ComputeSubNetworks }}
-apiVersion: compute.cnrm.cloud.google.com/v1beta1
-kind: ComputeSubnetwork
-metadata:
-  namespace: {{ $.Values.namespace }}
-  name: {{ print $NetworkName "-" .name }}
-spec:
-  ipCidrRange: {{ .ipCidrRange }}
-  region: {{ .region }}
-  networkRef:
-    name: {{ $NetworkName }}
----
-{{- end }}
 {{- end }}
