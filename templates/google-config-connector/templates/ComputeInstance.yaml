@@ -1,16 +1,15 @@
 {{- range .Values.ComputeInstances }}
-{{- $InstanceName := .name -}}
 apiVersion: compute.cnrm.cloud.google.com/v1beta1
 kind: ComputeInstance
 metadata:
   annotations:
     cnrm.cloud.google.com/allow-stopping-for-update: "true"
-  name: {{ $InstanceName }}
+  name: {{ .name }}
   namespace: {{ $.Values.namespace }}
   labels:
     demo: google-next-2020
 spec:
-  description: {{ $InstanceName.description | quote }}
+  description: {{ .description | quote }}
   machineType: n1-standard-1
   tags:
     - icmp
@@ -24,5 +23,4 @@ spec:
   networkInterface:
     - subnetworkRef:
         name: "next-gitops-demo-1-subnet1"
-{{- end }}
 {{- end }}
