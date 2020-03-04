@@ -1,4 +1,4 @@
-{{- range .Values.ComputeNetworks }}
+{{- range .Values.ComputeInstances }}
 {{- $NetworkName := .name -}}
 apiVersion: compute.cnrm.cloud.google.com/v1beta1
 kind: ComputeNetwork
