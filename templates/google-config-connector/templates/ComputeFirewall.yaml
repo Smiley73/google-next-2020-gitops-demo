@@ -6,6 +6,8 @@ kind: ComputeFirewall
 metadata:
   namespace: {{ $.Values.namespace }}
   name: {{ print $NetworkName "-" .name }}
+  labels:
+    demo: google-next-2020
 spec:
   networkRef:
     name: {{ $NetworkName }}

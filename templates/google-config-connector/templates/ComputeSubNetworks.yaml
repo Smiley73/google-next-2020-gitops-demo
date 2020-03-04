@@ -6,6 +6,8 @@ kind: ComputeSubnetwork
 metadata:
   namespace: {{ $.Values.namespace }}
   name: {{ print $NetworkName "-" .name }}
+  labels:
+    demo: google-next-2020
 spec:
   ipCidrRange: {{ .ipCidrRange }}
   region: {{ .region }}
