@@ -1,0 +1,6 @@
+namespace: "next-gitops-demo"
+ComputeInstances:
+  - name: "next-gitops-instance-1"
+    description: "An instance for our GitOps Demo @ Google NEXT 2020"
+  - name: "next-gitops-instance-2"
+    description: "Another instance for our GitOps Demo @ Google NEXT 2020"
