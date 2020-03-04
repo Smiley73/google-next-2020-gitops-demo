@@ -22,7 +22,7 @@ spec:
         external: debian-cloud/debian-9
   networkInterface:
     - subnetworkRef:
-        name: "next-gitops-demo-1-subnet1"
+        name: "next-gitops-demo-1-subnet-1"
   scheduling:
     preemptible: true
 ---
