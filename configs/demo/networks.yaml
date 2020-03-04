@@ -1,12 +1,12 @@
 namespace: "next-gitops-demo"
 ComputeNetworks:
-  - name: "gitops-next-demo-1"
+  - name: "next-gitops-demo-1"
     description: "A network for our GitOps Demo @ Google NEXT 2020"
     routingMode: REGIONAL
     ComputeSubNetworks:
-      - name: "subnet1"
+      - name: "subnet-1"
         region: us-central1
         ipCidrRange: 10.1.1.0/24
-      - name: "subnet2"
+      - name: "subnet-2"
         region: us-central1
         ipCidrRange: 10.1.2.0/24

@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: "next-gitops-demo"
+  name: {{ .Values.namespace }}
   annotations:
     cnrm.cloud.google.com/project-id: {{ .Values.projectName }}
 spec:

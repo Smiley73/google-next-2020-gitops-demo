@@ -2,7 +2,7 @@ apiVersion: eunomia.kohls.io/v1alpha1
 kind: GitOpsConfig
 metadata:
   name: "google-config-connector"
-  namespace: "next-gitops-demo"
+  namespace: {{ .Values.namespace }}
 spec:
   templateSource:
     uri: {{ $.Values.git.uri }}
