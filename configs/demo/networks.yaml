@@ -10,3 +10,20 @@ ComputeNetworks:
       - name: "subnet-2"
         region: us-central1
         ipCidrRange: 10.1.2.0/24
+    ComputeFirewall:
+      - name: "default-deny"
+        priority: 1000
+        direction: INGRESS
+        description: "Default Deny"
+        deny:
+          - protocol: "icmp"
+          - protocol: "tcp"
+          - protocol: "udp"
+      - name: "allow-icmp"
+        priority: 900
+        direction: INGRESS
+        description: "Default Deny"
+        targetTags:
+          - "pingable"
+        allow:
+          - protocol: "icmp"

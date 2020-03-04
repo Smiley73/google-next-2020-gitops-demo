@@ -1,0 +1,29 @@
+{{- range .Values.ComputeNetworks }}
+{{- $NetworkName := .name -}}
+{{- range .ComputeFirewall }}
+apiVersion: compute.cnrm.cloud.google.com/v1beta1
+kind: ComputeFirewall
+metadata:
+  namespace: {{ $.Values.namespace }}
+  name: {{ print $NetworkName "-" .name }}
+spec:
+  networkRef:
+    name: {{ $NetworkName }}
+  description: {{ .description | quote }}
+  direction: {{ .direction }}
+  disabled: {{ .disabled | default false }}
+  enableLogging: {{ .enableLogging | default false  }}
+  priority: {{ .priority }}
+  targetTags: {{ .targetTags | default "[]" }}
+  sourceTags: {{ .sourceTags | default "[]" }}
+  {{- with .deny }}
+  deny:
+    {{- toYaml . | nindent 6 }}
+  {{- end }}
+  {{- with .allow }}
+  allow:
+    {{- toYaml . | nindent 6 }}
+  {{- end }}
+---
+{{- end }}
+{{- end }}
