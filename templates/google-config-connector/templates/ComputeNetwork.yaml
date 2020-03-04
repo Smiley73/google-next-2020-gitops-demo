@@ -4,6 +4,8 @@ kind: ComputeNetwork
 metadata:
   namespace: {{ $.Values.namespace }}
   name: {{ .name }}
+  labels:
+    demo: google-next-2020
 spec:
   autoCreateSubnetworks: false
   routingMode: {{ .routingMode }}

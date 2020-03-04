@@ -24,6 +24,6 @@ ComputeNetworks:
         direction: INGRESS
         description: "Default Deny"
         targetTags:
-          - "pingable"
+          - "icmp"
         allow:
           - protocol: "icmp"
