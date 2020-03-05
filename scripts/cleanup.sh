@@ -2,8 +2,6 @@
 
 rm -rf tmp
 
-gcloud config set project ${PROJECT_ID}
-
 gcloud container clusters get-credentials next-gitops-demo --zone us-central1-a --project ${PROJECT_ID}
 kubectl delete namespace next-gitops-demo
 

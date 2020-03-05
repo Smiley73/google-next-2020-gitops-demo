@@ -2,13 +2,6 @@
 
 set -euo pipefail
 
-# Nothing special here. We're just automatically setting up the requirements as documented by Google:
-# https://cloud.google.com/config-connector/docs/how-to/install-upgrade-uninstall
-
-echo "Using GCP project '${PROJECT_ID}'"
-
-gcloud config set project ${PROJECT_ID}
-
 # Make sure we got the service account
 if [ -z "$(gcloud iam service-accounts list | grep cnrm-system@${PROJECT_ID}.iam.gserviceaccount.com)" ]; then
   gcloud iam service-accounts create cnrm-system

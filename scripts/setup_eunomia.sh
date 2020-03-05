@@ -2,16 +2,8 @@
 
 set -euo pipefail
 
-# Nothing special here. We're just automatically setting up the requirements as documented by Eunomia:
-# https://github.com/KohlsTechnology
-
-echo "Using GCP project '${PROJECT_ID}'"
-
-gcloud config set project ${PROJECT_ID}
-
-gcloud container clusters get-credentials next-gitops-demo --zone us-central1-a --project ${PROJECT_ID}
-
 # check out the Eunomia repo
+test -d tmp/eunomia && rm -rf tmp/eunomia
 mkdir -p tmp
 git clone https://github.com/KohlsTechnology/eunomia.git tmp/eunomia
 

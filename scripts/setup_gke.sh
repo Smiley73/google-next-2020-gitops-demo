@@ -2,11 +2,7 @@
 
 set -euo pipefail
 
-# Nothing special here. We're just automatically setting up the requirements as documented by Google:
-# https://cloud.google.com/config-connector/docs/how-to/install-upgrade-uninstall
-
 echo "Using GCP project '${PROJECT_ID}'"
-
 gcloud config set project ${PROJECT_ID}
 
 # Spin up the GKE cluster

@@ -2,15 +2,6 @@
 
 set -euo pipefail
 
-# Nothing special here. We're just automatically setting up the requirements as documented by Google:
-# https://cloud.google.com/config-connector/docs/how-to/install-upgrade-uninstall
-
-echo "Using GCP project '${PROJECT_ID}'"
-
-gcloud config set project ${PROJECT_ID}
-
-gcloud container clusters get-credentials next-gitops-demo --zone us-central1-a --project ${PROJECT_ID}
-
 # Download Google Config Connector
 mkdir -p tmp
 gsutil cp gs://cnrm/latest/release-bundle.tar.gz tmp/release-bundle.tar.gz
