@@ -27,7 +27,7 @@ spec:
       accessConfig:
         - networkTier: STANDARD
   scheduling:
-    automaticRestart: false
-    preemptible: true
+    automaticRestart: true
+    #preemptible: false
 ---
 {{- end }}

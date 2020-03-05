@@ -8,10 +8,10 @@ gcloud config set project ${PROJECT_ID}
 # Spin up the GKE cluster
 gcloud beta container clusters create next-gitops-demo \
   --zone=us-central1-a \
-  --preemptible \
   --machine-type=n1-standard-1 \
   --identity-namespace=${PROJECT_ID}.svc.id.goog \
   --release-channel=stable
+#  --preemptible \
 
 # Access for workload identity
 gcloud iam service-accounts add-iam-policy-binding \
