@@ -55,20 +55,20 @@ kubectl describe gitopsconfigs -n next-gitops-demo
 
 echo -e "\n\nTake a look at how the Eunomia job is doing"
 read -n 1 -s -r -p "Press any key to continue"; clear
-echo "Jobs"
+echo -e "Jobs\n"
 kubectl get jobs -n next-gitops-demo
-echo "Pods"
+echo -e "\n\nPods\n"
 kubectl get pods -n next-gitops-demo
 
 echo -e "\n\nTake a look at what has been created through GitOps leveraging Kohl's Eunomia and Google's Config Connector"
 read -n 1 -s -r -p "Press any key to continue"; clear
-echo "gcloud compute networks list"
+echo -e "gcloud compute networks list\n"
 gcloud compute networks list
 
-echo "gcloud compute firewall-rules list"
+echo -e "\n\ngcloud compute firewall-rules list\n"
 gcloud compute firewall-rules list
 
-echo -e "\ngcloud compute instances list"
+echo -e "\n\ngcloud compute instances list\n"
 gcloud compute instances list
 
 echo -e "\n\nOpen a new shell and execute: ./scripts/run_ping.sh"
@@ -105,13 +105,13 @@ kubectl delete namespace next-gitops-demo
 
 echo -e "\n\nEverything should be gone now"
 
-echo "gcloud compute networks list"
+echo -e "gcloud compute networks list\n"
 gcloud compute networks list
 
-echo -e "\ngcloud compute firewall-rules list"
+echo -e "\n\ngcloud compute firewall-rules list\n"
 gcloud compute firewall-rules list
 
-echo -e "\ngcloud compute instances list"
+echo -e "\n\ngcloud compute instances list\n"
 gcloud compute instances list
 
 echo -e "\nThe End\n"
